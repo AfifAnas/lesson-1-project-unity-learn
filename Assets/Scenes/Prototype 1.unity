@@ -539,6 +539,53 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &846886971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 846886973}
+  - component: {fileID: 846886974}
+  m_Layer: 0
+  m_Name: CameraManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &846886973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846886971}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.15867138, y: 1.2734301, z: 10.525078}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &846886974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846886971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d28fd8f264db51a4c9507a8a9f21b404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  switchKey: 102
+  mainCamera: {fileID: 1769144288}
+  secondCamera: {fileID: 2000873738}
 --- !u!1001 &956051586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -884,7 +931,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1769144289}
   - component: {fileID: 1769144288}
-  - component: {fileID: 1769144287}
   - component: {fileID: 1769144286}
   - component: {fileID: 1769144290}
   m_Layer: 0
@@ -938,14 +984,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1769144287
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1769144284}
-  m_Enabled: 1
 --- !u!20 &1769144288
 Camera:
   m_ObjectHideFlags: 0
@@ -1021,20 +1059,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1769144284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d28fd8f264db51a4c9507a8a9f21b404, type: 3}
+  m_Script: {fileID: 11500000, guid: 07f8edcfe161bc34b97a98055fdf4b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 1769144288}
-  secondCamera: {fileID: 2000873738}
-  switchCameraAction:
-    m_Name: Switch Camera
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 42c5e27f-0a1e-4de3-8959-d3028a17dd9d
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
+  player: {fileID: 425407929}
+  offset: {x: 0, y: 5, z: -9}
 --- !u!1 &1897748016 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8780424320546655309, guid: 71782582b9d2cac4cba5251a3b767d13, type: 3}
@@ -1082,7 +1111,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2000873739}
   - component: {fileID: 2000873738}
-  - component: {fileID: 2000873737}
   - component: {fileID: 2000873736}
   - component: {fileID: 2000873740}
   m_Layer: 0
@@ -1136,14 +1164,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &2000873737
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2000873734}
-  m_Enabled: 1
 --- !u!20 &2000873738
 Camera:
   m_ObjectHideFlags: 0
@@ -1151,7 +1171,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000873734}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -1219,20 +1239,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2000873734}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d28fd8f264db51a4c9507a8a9f21b404, type: 3}
+  m_Script: {fileID: 11500000, guid: 07f8edcfe161bc34b97a98055fdf4b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 1769144288}
-  secondCamera: {fileID: 2000873738}
-  switchCameraAction:
-    m_Name: Switch Camera
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 700aeb50-218f-4f99-b7a1-ae74d80592f3
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
+  player: {fileID: 425407929}
+  offset: {x: 0, y: 2.5, z: 0.31}
 --- !u!4 &2093379048 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7317731328111405690, guid: 5f0963a629b97442587b7f3ece766e42, type: 3}
@@ -1521,3 +1532,4 @@ SceneRoots:
   - {fileID: 1385500138}
   - {fileID: 2111544753}
   - {fileID: 1354594476}
+  - {fileID: 846886973}

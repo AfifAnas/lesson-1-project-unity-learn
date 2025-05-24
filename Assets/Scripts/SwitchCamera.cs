@@ -1,41 +1,17 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class SwitchCamera : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public KeyCode switchKey;
     public Camera mainCamera;
     public Camera secondCamera;
-    public InputAction switchCameraAction;
 
-    private void OnEnable() // set enable camera
+    void Update()
     {
-        switchCameraAction.Enable();
-        switchCameraAction.performed += OnSwitchCamera;
-    }
-
-    private void OnDisable() // set disable camera
-    {
-        switchCameraAction.performed -= OnSwitchCamera;
-        switchCameraAction.Disable();
-    }
-
-    void Start()
-    {
-        SetInitialCameraState();
-    }
-
-    void SetInitialCameraState() // set first camera
-    {
-        mainCamera.gameObject.SetActive(true);
-        secondCamera.gameObject.SetActive(false);
-    }
-
-    void OnSwitchCamera(InputAction.CallbackContext context) // input switch camera
-    {
-        bool switchToMain = secondCamera.gameObject.activeSelf;
-
-        mainCamera.gameObject.SetActive(switchToMain);
-        secondCamera.gameObject.SetActive(!switchToMain);
+        if (Input.GetKeyDown(switchKey))
+        {
+            mainCamera.enabled = !mainCamera.enabled; // Toggle main camera
+            secondCamera.enabled = !secondCamera.enabled; // Toggle second camera
+        }
     }
 }
